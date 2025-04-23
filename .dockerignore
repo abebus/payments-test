@@ -15,5 +15,7 @@ wheels/
 # celery
 celerybeat-schedule
 
-.env
-.envrc
+# Docker-specific additions
+Dockerfile
+.dockerignore
+docker-compose*.yml
