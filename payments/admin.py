@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib import admin
 from django.utils.html import format_html
-from unfold.admin import ModelAdmin
 
 from .models import Invoice, PaymentAttempt
 
@@ -21,8 +20,7 @@ class PaymentAttemptForm(forms.ModelForm):
         )
 
 
-@admin.register(PaymentAttempt)
-class PaymentAttemptAdmin(ModelAdmin):
+class PaymentAttemptAdminMixin:
     __color_map: dict[tuple[str, str], str] = {
         PaymentAttempt.Result.SUCCESS: "green",
         PaymentAttempt.Result.INSUFFICIENT_FUNDS: "orange",
@@ -48,8 +46,12 @@ class PaymentAttemptAdmin(ModelAdmin):
         )
 
 
-@admin.register(Invoice)
-class InvoiceAdmin(ModelAdmin):
+@admin.register(PaymentAttempt)
+class PaymentAttemptdAdmin(admin.ModelAdmin, PaymentAttemptAdminMixin):
+    pass
+
+
+class InvoiceAdminMixin:
     __color_map: dict[tuple[str, str], str] = {
         Invoice.Status.PENDING: "orange",
         Invoice.Status.PAID: "green",
@@ -72,3 +74,8 @@ class InvoiceAdmin(ModelAdmin):
             self.__color_map.get(obj.status, "black"),
             obj.get_status_display(),
         )
+
+
+@admin.register(Invoice)
+class InvoiceAdmin(admin.ModelAdmin, InvoiceAdminMixin):
+    pass
