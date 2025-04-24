@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+# type: ignore 
 import json
 
 from django.db import models

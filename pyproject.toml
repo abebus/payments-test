@@ -10,11 +10,18 @@ dependencies = [
     "django-celery-beat>=2.8.0",
     "django-unfold>=0.55.3",
     "gunicorn>=23.0.0",
+    "psycopg[binary,pool]>=3.2.6",
     "redis>=5.2.1",
 ]
 
 [dependency-groups]
 dev = [
+    "celery-types>=0.23.0",
+    "django-types>=0.20.0",
     "mypy>=1.15.0",
     "ruff>=0.11.6",
 ]
+
+[tool.mypy]
+exclude = ".*/payments/models/.*"
+disable_error_code = ["call-overload", "import-untyped"]

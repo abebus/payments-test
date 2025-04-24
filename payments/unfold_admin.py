@@ -14,10 +14,13 @@ unfold_admin_site = NewUnfoldAdminSite(name="unfold")
 
 
 @admin.register(PaymentAttempt, site=unfold_admin_site)
-class PaymentAttemptUnfoldAdmin(UnfoldModelAdmin, PaymentAttemptAdminMixin):
+class PaymentAttemptUnfoldAdmin(PaymentAttemptAdminMixin, UnfoldModelAdmin):
     pass
 
 
 @admin.register(Invoice, site=unfold_admin_site)
-class InvoiceUnfoldAdmin(UnfoldModelAdmin, InvoiceAdminMixin):
+class InvoiceUnfoldAdmin(
+    InvoiceAdminMixin,
+    UnfoldModelAdmin,
+):
     pass

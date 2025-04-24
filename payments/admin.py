@@ -47,7 +47,7 @@ class PaymentAttemptAdminMixin:
 
 
 @admin.register(PaymentAttempt)
-class PaymentAttemptdAdmin(admin.ModelAdmin, PaymentAttemptAdminMixin):
+class PaymentAttemptdAdmin(PaymentAttemptAdminMixin, admin.ModelAdmin):
     pass
 
 
@@ -77,5 +77,5 @@ class InvoiceAdminMixin:
 
 
 @admin.register(Invoice)
-class InvoiceAdmin(admin.ModelAdmin, InvoiceAdminMixin):
+class InvoiceAdmin(InvoiceAdminMixin, admin.ModelAdmin):
     pass

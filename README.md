@@ -1,3 +1,23 @@
+# Запуск
+
+```
+docker compose up -d --build
+```
+
+
+# .env
+
+```
+SECRET_KEY=secret
+
+POSTGRES_DB=test_db
+POSTGRES_USER=test_user
+POSTGRES_PASSWORD=test_pass
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_HOST=postgres
+```
+
 Тестовое задание 
 
 Необходимо создать веб-сервер для обработки платёжных транзакций. Пользовательский интерфейс представляет собой две админки:
